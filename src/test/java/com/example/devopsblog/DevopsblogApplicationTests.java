@@ -1,36 +1,29 @@
 package com.example.devopsblog;
 
+import com.example.devopsblog.controller.RestController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.mockito.Mockito.when;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.lang.reflect.Method;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DevopsblogApplicationTests {
 
+
+	@MockBean
+	RestController restController;
+
 	@Test
-	public void testmethod1() {
-		System.out.println("Test for "+new Object() {}.getClass().getEnclosingMethod().getName());
+	public void getHelloPlayerNameTest() {
+		when(restController.getHelloPlayerName("John")).thenReturn("Hello player John");
 	}
 
 	@Test
-	public void testmethod2() {
-		System.out.println("Test for "+new Object() {}.getClass().getEnclosingMethod().getName());
-	}
-	@Test
-	public void testmethod3() {
-		System.out.println("Test for "+new Object() {}.getClass().getEnclosingMethod().getName());
-	}
-	@Test
-	public void testmethod4() {
-		System.out.println("Test for "+new Object() {}.getClass().getEnclosingMethod().getName());
-	}
-	@Test
-	public void testmethod5() {
-		System.out.println("Test for "+new Object() {}.getClass().getEnclosingMethod().getName());
+	public void happyBirthdayUserTest() {
+		when(restController.happyBirthdayUser("John")).thenReturn("Happy birthday to you, John");
 	}
 
 }
